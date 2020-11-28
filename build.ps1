@@ -1,0 +1,1 @@
+pyinstaller gui.py -n ms_agh_gui --noconsole --hidden-import "babel.numbers" --add-data "data;data" --paths './virtualenv/Lib/site-packages'

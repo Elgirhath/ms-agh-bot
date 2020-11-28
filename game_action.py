@@ -1,0 +1,3 @@
+IGNORE = 0
+NOTIFY = 1
+COMMENT = 2

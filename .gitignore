@@ -1,0 +1,8 @@
+logs.txt
+build
+dist
+*.spec
+*.log
+.vscode
+__pycache__
+virtualenv
