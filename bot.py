@@ -8,7 +8,7 @@ import facebook_logger
 import game_action
 import game_action_controller
 import game_action_selector
-import game_data_retriever
+from data_extraction import game_data_extractor
 import post_gatherer
 
 
@@ -45,7 +45,7 @@ def main(args):
         posts = post_gatherer.get_posts(driver)
 
         for post in posts:
-            game_data = game_data_retriever.retrieve_game_data(post)
+            game_data = game_data_extractor.extract_game_data(post)
 
             action = game_action_selector.get_action(game_data, args)
             

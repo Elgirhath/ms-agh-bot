@@ -12,7 +12,7 @@ field_whitelist = [
     "piastowsk"
 ]
 
-def retrieve_is_on_agh(post : Post):
+def extract_is_on_agh(post : Post):
     message = post.get_normalized_message()
 
     for field in field_blacklist:

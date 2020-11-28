@@ -75,8 +75,7 @@ def create_post_from_article(article_element):
     author = info.find_element_by_xpath("div[1]").get_attribute('innerText')
     timeinfo = info.find_element_by_xpath(".//a[@href='#']")
     time = timeinfo.get_attribute('aria-label')
-    message_box = post.find_element_by_xpath("div[3]/div/div")
-    message = message_box.get_attribute('innerText')
+    message = post.find_element_by_xpath("div[3]").get_attribute('innerText')
     comment_box = post.find_element_by_xpath("div[4]//form")
 
     return Post(author, time, message, comment_box)

@@ -1,4 +1,4 @@
-import game_data_retriever
+from data_extraction import game_data_extractor
 from datetime import datetime, timedelta
 from game_action import *
 

@@ -13,7 +13,7 @@ weekday_list = [
     'niedziela'
 ]
 
-def retrieve_time(message):
+def extract_time(message):
     time_matches = re.search("(\d?\d)[:.](\d[05])", message)
     if time_matches:
         time = (int(time_matches.groups()[0]), int(time_matches.groups()[1]))
@@ -63,7 +63,7 @@ def validate_time(hours, mins):
         return False
     return True
 
-def retrieve_game_date(post : Post):
+def extract_game_date(post : Post):
     message = post.get_normalized_message()
 
     posttime = None
@@ -91,7 +91,7 @@ def retrieve_game_date(post : Post):
 
     game_datetime = posttime + timedelta(days=day_offset)
 
-    time = retrieve_time(message)
+    time = extract_time(message)
 
     if time is None:
         return None

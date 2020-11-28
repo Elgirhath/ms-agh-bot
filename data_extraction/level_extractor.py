@@ -19,7 +19,7 @@ veryhigh_whitelist = [
     "dobry +"
 ]
 
-def retrieve_level(post : Post):
+def extract_level(post : Post):
     message = post.get_normalized_message()
     
     for item in low_whitelist:
