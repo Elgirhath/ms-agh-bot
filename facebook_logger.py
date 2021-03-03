@@ -29,7 +29,7 @@ def log_in(driver, email, password):
 
     remove_language_popup(driver)
 
-    driver.find_element_by_id("u_0_h").click()
+    driver.find_element_by_xpath("//button[@data-cookiebanner='accept_button']").click()
 
     sleep(0.1)
 
@@ -39,6 +39,6 @@ def log_in(driver, email, password):
     
     sleep(0.1)
 
-    driver.find_element_by_id("u_0_b").click()
+    driver.find_element_by_xpath("//button[@name='login']").click()
 
     sleep(0.5)

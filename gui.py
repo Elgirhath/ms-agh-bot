@@ -9,8 +9,7 @@ parser = argparse.ArgumentParser(description='Run gui for AGH football game find
 parser.add_argument('-d', '--debug', action='store_const', default=False, const=True)
 parsed_args = parser.parse_args()
 
-# sys.stdout = open('logs.txt', 'a')
-# sys.stderr = open('logs.txt', 'a')
+sys.stderr = open('logs.txt', 'a')
 
 args = {
     "start_date": None,

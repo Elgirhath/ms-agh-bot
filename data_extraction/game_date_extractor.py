@@ -66,15 +66,7 @@ def validate_time(hours, mins):
 def extract_game_date(post : Post):
     message = post.get_normalized_message()
 
-    posttime = None
-    if "godz." in post.time:
-        hourdiff = -int(post.time[:2])
-        posttime = datetime.datetime.now() + timedelta(hours=hourdiff)
-    elif "dni" in post.time:
-        daydiff = -int(post.time[:2])
-        posttime = datetime.datetime.now() + timedelta(days=daydiff)
-    else:
-        posttime = datetime.datetime.now()
+    posttime = datetime.datetime.now() #since can't get date from the post
         
     posttime_day_of_year = posttime.timetuple().tm_yday
     posttime_day_of_week = posttime.timetuple().tm_wday

@@ -35,6 +35,7 @@ def main(args):
 
     today = datetime.today().timetuple()
 
+    first_check = True
     game_found = False
 
     action_controller = game_action_controller.GameActionController(driver, args)
@@ -44,20 +45,25 @@ def main(args):
 
         posts = post_gatherer.get_posts(driver)
 
-        for post in posts:
-            game_data = game_data_extractor.extract_game_data(post)
+        logging.info(f"New posts: {len(posts)}")
 
-            action = game_action_selector.get_action(game_data, args)
-            
-            if action == game_action.IGNORE:
-                continue
+        if not first_check:
+            for post in posts:
+                game_data = game_data_extractor.extract_game_data(post)
 
-            if action == game_action.NOTIFY:
-                action_controller.notify(post, game_data)
+                action = game_action_selector.get_action(game_data, args)
+                
+                if action == game_action.IGNORE:
+                    continue
 
-            if action == game_action.COMMENT:
-                action_controller.comment(post, game_data)
-                game_found = True
+                if action == game_action.NOTIFY:
+                    action_controller.notify(post, game_data)
+
+                if action == game_action.COMMENT:
+                    action_controller.comment(post, game_data)
+                    game_found = True
+
+        first_check = False
 
         logging.info("Sleeping...")
 

@@ -2,6 +2,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 import unidecode
 from time import sleep
+from datetime import datetime
 import logging
 
 SCROLL_PAUSE_TIME = 0.5
@@ -73,9 +74,8 @@ def create_post_from_article(article_element):
 
     info = post.find_element_by_xpath("div[2]/div/div[2]/div")
     author = info.find_element_by_xpath("div[1]").get_attribute('innerText')
-    timeinfo = info.find_element_by_xpath(".//a[@href='#']")
-    time = timeinfo.get_attribute('aria-label')
     message = post.find_element_by_xpath("div[3]").get_attribute('innerText')
     comment_box = post.find_element_by_xpath("div[4]//form")
+    time = datetime.now() #since time can't be taken from the post
 
     return Post(author, time, message, comment_box)
